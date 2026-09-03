@@ -1,0 +1,120 @@
+@import "tailwindcss";
+@import "lenis/dist/lenis.css";
+
+/* ---------------------------------------------------------------
+   RQ Ops design tokens
+   Committed light design (no dark mode) — matches the restrained,
+   editorial style the landing page is modelled on.
+   --------------------------------------------------------------- */
+:root {
+  --background: #ffffff;
+  /* Near-black, not pure black — pure #000 reads harsh on white */
+  --foreground: #151515;
+
+  /* Warm off-white, used sparingly rather than on alternating sections */
+  --surface: #f6f5f2;
+  --surface-strong: #edebe6;
+
+  /* Accent — a warm ember. HVAC is heat; a blue "trust" accent was a
+     non-choice. Used sparingly: CTAs, links, one phrase in the H1. */
+  --accent: #c2410c;
+  --accent-hover: #9a3412;
+
+  /* Hero object gradient stops. HVAC covers both ends of the year, so
+     the dial runs from a cool blue through amber to a hot red. */
+  --cool: #0e7490;
+  --ember-1: #fbbf24;
+  --ember-2: #f97316;
+  --ember-3: #dc2626;
+
+  /* Urgency accent, used only in the intake comparison */
+  --alert: #b42318;
+
+  /* Secondary text is the SAME ink at reduced opacity, not a separate
+     gray. Keeps the whole page tonally unified. */
+  --muted: rgba(21, 21, 21, 0.62);
+  --muted-soft: rgba(21, 21, 21, 0.45);
+  --border: rgba(21, 21, 21, 0.1);
+  --border-strong: rgba(21, 21, 21, 0.18);
+
+  /* Uniform vertical rhythm — one value, applied everywhere */
+  --section-y: 96px;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-strong: var(--surface-strong);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-alert: var(--alert);
+  --color-muted: var(--muted);
+  --color-muted-soft: var(--muted-soft);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+
+  --font-sans: var(--font-inter);
+  --color-section-y: var(--section-y);
+}
+
+/* Restrained editorial scale. The step from h1 to h2 is deliberately
+   small (~1.25x) — a large dramatic jump is what makes a page read as
+   a template rather than a designed system. */
+.t-h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+}
+
+.t-h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.022em;
+}
+
+@media (min-width: 640px) {
+  .t-h1 {
+    font-size: 3.9rem;
+  }
+  .t-h2 {
+    font-size: 2.4rem;
+  }
+}
+
+.section-y {
+  padding-top: var(--section-y);
+  padding-bottom: var(--section-y);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Small caps eyebrow label that opens most sections */
+.eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-soft);
+}
+
+/* Respect users who prefer reduced motion — kills the reveal animations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
